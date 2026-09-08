@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age & Date Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>Age & Date Calculator</h1>
+      <p class="subtitle">Calculate your exact age, total days lived, and age on any date</p>
+    </header>
+
+    <main>
+      <!-- Date Inputs Card -->
+      <section class="card input-card">
+        <form id="calculatorForm" onsubmit="return false;">
+          <div class="input-row">
+            <div class="field">
+              <label for="dobInput">Date of Birth</label>
+              <input type="date" id="dobInput" required>
+            </div>
+
+            <div class="field">
+              <label for="targetDateInput">Selected Date</label>
+              <input type="date" id="targetDateInput" required>
+            </div>
+          </div>
+
+          <!-- Quick Date Presets -->
+          <div class="presets-row">
+            <span class="presets-title">Quick Target:</span>
+            <div class="preset-buttons">
+              <button type="button" class="preset-btn active" data-preset="today">Today</button>
+              <button type="button" class="preset-btn" data-preset="plus1y">+1 Year</button>
+              <button type="button" class="preset-btn" data-preset="plus5y">+5 Years</button>
+              <button type="button" class="preset-btn" data-preset="plus10y">+10 Years</button>
+              <button type="button" class="preset-btn" data-preset="retirement">Age 60</button>
+            </div>
+          </div>
+
+          <div class="actions-row">
+            <button type="button" id="calculateBtn" class="btn btn-orange">Calculate Age</button>
+            <button type="button" id="resetBtn" class="btn btn-outline">Reset</button>
+          </div>
+        </form>
+
+        <div id="errorAlert" class="alert" style="display: none;"></div>
+      </section>
+
+      <!-- Results Section -->
+      <section id="resultsSection" class="results-section" style="display: none;">
+        <!-- Birthday Celebration Note -->
+        <div id="birthdayBanner" class="note-box birthday-note" style="display: none;">
+          🎂 <strong>Happy Birthday!</strong> Wishing you a wonderful day ahead!
+        </div>
+
+        <!-- Future Projection Note -->
+        <div id="futureBanner" class="note-box future-note" style="display: none;">
+          Showing projected age on <strong id="futureDateLabel"></strong>.
+        </div>
+
+        <!-- Main Result Card -->
+        <div class="card main-result-card">
+          <div class="result-header">
+            <span class="result-label" id="resultTypeBadge">Your Age</span>
+            <button type="button" id="copyBtn" class="btn-copy" title="Copy summary">Copy Result</button>
+          </div>
+
+          <div class="age-numbers">
+            <div class="age-block">
+              <span class="number" id="yearsVal">0</span>
+              <span class="unit">Years</span>
+            </div>
+            <div class="age-block">
+              <span class="number" id="monthsVal">0</span>
+              <span class="unit">Months</span>
+            </div>
+            <div class="age-block">
+              <span class="number" id="daysVal">0</span>
+              <span class="unit">Days</span>
+            </div>
+          </div>
+
+          <p class="age-summary" id="ageSentence">You are 0 years, 0 months, and 0 days old.</p>
+        </div>
+
+        <!-- Key Metrics Grid -->
+        <div class="stats-grid">
+          <div class="stat-box">
+            <span class="stat-heading">Total Days Lived</span>
+            <span class="stat-data" id="totalDaysVal">0</span>
+            <span class="stat-note" id="totalDaysSub">calendar days</span>
+          </div>
+
+          <div class="stat-box next-bday-box">
+            <span class="stat-heading">Next Birthday</span>
+            <span class="stat-data" id="nextBirthdayDays">--</span>
+            <span class="stat-note" id="nextBirthdaySub">--</span>
+          </div>
+
+          <div class="stat-box">
+            <span class="stat-heading">Total Weeks</span>
+            <span class="stat-data" id="totalWeeksVal">0</span>
+            <span class="stat-note">weeks</span>
+          </div>
+
+          <div class="stat-box">
+            <span class="stat-heading">Total Hours</span>
+            <span class="stat-data" id="totalHoursVal">0</span>
+            <span class="stat-note" id="totalMinutesVal">0 minutes</span>
+          </div>
+
+          <div class="stat-box">
+            <span class="stat-heading">Zodiac Sign</span>
+            <span class="stat-data stat-sm" id="zodiacText">--</span>
+            <span class="stat-note">Tropical Zodiac</span>
+          </div>
+
+          <div class="stat-box">
+            <span class="stat-heading">Day Born On</span>
+            <span class="stat-data stat-sm" id="bornDayOfWeek">--</span>
+            <span class="stat-note">Day of week</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Simple & accurate age calculator • Works offline</p>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast">Copied to clipboard!</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
