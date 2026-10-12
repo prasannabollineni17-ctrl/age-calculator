@@ -326,6 +326,8 @@ document.addEventListener('DOMContentLoaded', () => {
           showError('Please select your Date of Birth first to calculate Age 60.');
           return;
         }
+      } else if (preset === 'y2030') {
+        targetDateInput.value = '2030-01-01';
       }
 
       performCalculation();
